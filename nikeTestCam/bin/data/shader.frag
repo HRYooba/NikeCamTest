@@ -21,12 +21,12 @@ void main() {
         diffRGB = vec3(0.0, 0.0, 0.0);
     }
     
-    vec3 color = length(diffRGB)*vec3(1.0*0.2, 0.0, 0.8*0.2);
-    vec3 Tcolor = color + col_display.rgb / 1.04;
+    vec4 color = vec4(length(diffRGB)*vec3(1.0*0.2, 0.0, 0.8*0.2), 1.0);
+    vec4 Tcolor = vec4(color.rgb + col_display.rgb / 1.04, 1.0);
     
     if (u_time > 0.05) {
-        gl_FragColor = vec4(Tcolor, 1.0);
+        gl_FragColor = Tcolor;
     } else {
-        gl_FragColor = vec4(color, 1.0);
+        gl_FragColor = color;
     }
 }
